@@ -11,7 +11,7 @@ const documentCreatePost = (req, res, next) => {
         subject: req.body.subject,
         description: req.body.description,
         status: req.body.status,
-        application: req.body.application,
+        ApplicationId: req.body.application,
         EmployeeId: req.body.employee,
         TypeId: req.body.type,
         categoryId: req.body.category 

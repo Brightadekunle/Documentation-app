@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Application.associate = (models) => {
-    Application.belongsTo(models.Document, { onDelete: "CASCADE", })
+    Application.hasMany(models.Document, { onDelete: "CASCADE", })
 
 }
 
