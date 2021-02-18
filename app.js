@@ -35,9 +35,7 @@ app.use(session({
 // git remote add origin https://github.com/Brightadekunle/Nodejs-Instagramclone.git
 
 app.use(function (req, res, next) {
-  res.locals.login = req.isAuthenticated()
-  res.locals.error = req.flash('error')
-  res.locals.loggedInUser = req.user
+  // res.locals.login = req.isAuthenticated()
   next()
 })
 

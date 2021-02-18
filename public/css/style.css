@@ -1,0 +1,86 @@
+body {
+  font-family: "Libre Franklin";
+  /* background-image: url("../images/pexels-negative-space-160107.jpg");
+  background-size: cover; */
+  background-color: #faf7f6;
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  width: 450px;
+  /* height: 90px; */
+  margin: 180px auto;
+  /* background-image: url("../images/bg-boost-desktop.svg"); */
+  background-color: #fff;
+  background-size: cover;
+  padding: 25px 40px;
+  border-radius: 7px;
+}
+
+/* .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+input {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-family: "Libre Franklin", sans-serif;
+  border: 1px solid hsl(246, 25%, 77%);
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid hsl(248, 32%, 49%);
+}
+button {
+  width: 100%;
+  border: none;
+  color: #fff;
+  padding: 12px 23px;
+  border-radius: 10px;
+  /* background-color: hsl(154, 59%, 51%); */
+  background-color: #777;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-family: "Libre Franklin", sans-serif;
+  /* border-bottom: 4px solid hsl(157, 89%, 41%); */
+  border-bottom: #777;
+  font-size: 15px;
+}
+
+button:hover {
+  outline: none;
+  transform: translateY(3px);
+}
+
+button:active {
+  transform: translateY(0);
+  border-bottom: none;
+}
+
+nav {
+  /* margin: 30px 250px 0 100px; */
+  margin: 40px 200px;
+}
+
+nav a {
+  color: #777;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-item {
+  margin-left: 40px;
+}

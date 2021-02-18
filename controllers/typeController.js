@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const typeCreateGet = (req, res, next) => {
-    res.render('createtype', { title: "Type Create Page" })
+    res.render('type/createtype', { title: "Type Create Page" })
 }
 
 
@@ -15,7 +15,8 @@ const typeCreatePost = (req, res, next) => {
             //     message: "Category created successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/type/types')
+            // res.redirect('/documentation/type/types')
+            res.send("Type created successfully")
         })
         .catch(err => console.log(err))
 }
