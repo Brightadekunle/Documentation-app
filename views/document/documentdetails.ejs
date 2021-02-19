@@ -1,0 +1,21 @@
+
+<article class="media content-section">
+  <% let image =  baseUrl + post.Author.profilePicture %>
+    <div class="media-body">
+      <div class="article-metadata">
+        <!-- <a class="mr-2" href="/blog/author/<%= post.Author.id %>"><%= post.Author.username %></a> -->
+        <small class="text-muted"><%= post.createdAt %></small>
+        <% if (loggedInUser) { %>
+          <% if (post.Author.username == loggedInUser.username) { %>
+            <div>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/blog/post/update/<%= post.id %>">Update</a>
+              <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            </div>
+          <% } %>
+        <% } else { %>
+        <% } %>
+      </div>
+      <h2 class="article-title"><%= post.post_title %></h2>
+      <p class="article-content"><%= post.post_body %></p>
+    </div>
+  </article>

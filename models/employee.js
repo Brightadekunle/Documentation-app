@@ -11,12 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   name: DataTypes.STRING,
   department: DataTypes.STRING,
   role: DataTypes.STRING,
-  email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-        isEmail: true,
-    }},
   });
 
   Employee.associate = (models) => {

@@ -10,28 +10,40 @@
                 <input type="text" name="status" placeholder="Status">
             </div>
             <div>
-                <input type="text" name="application" placeholder="Application">
-            </div>
-            <div>
                 <input type="text" name="employee" placeholder="Employee">
-            </div>
-            <div>
-                <% types.forEach(type => { %>
-                <select name="type" class="form-control">
-                    <option value=""><%= type.name %></option>
-                    <option value=""><%= type.name %></option>
-                </select>
-                <% }) %>
-            </div>
-            <div>
-                <input type="text" name="category" placeholder="Category">
             </div>
             <div>
                 <input type="text" name="description" placeholder="Description">
             </div>
             <div>
+                <h4>Select a Category</h4>
+                <select name="category" class="form-control">
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div>
+                <h4>Select an Application</h4>
+                <select name="application" class="form-control">
+                    <% applications.forEach(application => { %>
+                    <option value="<%= application.id %>"><%= application.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div>
+                <h4>Select a Type</h4>
+                <% types.forEach(type => { %>
+                <label for="" class="radio">
+                    <input type="radio" class="radio__input" name="type">
+                    <div class="radio__radio"></div>
+                    <label for=""><%= type.name %></label>
+                </label>
+                <% }) %>
+            <div>
                 <button type="submit" class="">Submit</button>
             </div>
+            
         </div>
     </form>
     

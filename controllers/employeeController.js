@@ -9,7 +9,6 @@ const employeeCreatePost = (req, res, next) => {
 
     models.Employee.create({
         name: req.body.name,
-        email: req.body.email,
         department: req.body.department,
         role: req.body.role,
     })
@@ -18,7 +17,8 @@ const employeeCreatePost = (req, res, next) => {
             //     message: "Category created successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/employee/employees')
+            // res.redirect('/documentation/employee/employees')
+            res.send("Employee created successfully")
         })
         .catch(err => console.log(err))
 }

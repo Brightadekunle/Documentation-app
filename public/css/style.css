@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Libre Franklin", "Montserrat", "Raleway", sans-serif;
   background: url("../images/showcase.jpg") no-repeat center center fixed;
@@ -104,4 +108,37 @@ nav a {
 
 .navbar-brand:hover {
   color: #64a5b7;
+}
+
+.radio {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio input {
+  padding: 0;
+  width: 50px;
+}
+
+.radio__input {
+  height: 1.25em;
+  width: 1.25em;
+}
+
+.radio__radio {
+  /* display: block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #d8e4e2;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 2px; */
+}
+
+input[type="radio"]:checked:after {
+  background-color: #64a5b7;
+  border: 2px solid #d8e4e2;
 }

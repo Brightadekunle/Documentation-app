@@ -3,15 +3,21 @@ const models = require('../models')
 const documentCreateGet = (req, res, next) => {
     models.Type.findAll()
         .then(types => {
-            console.log(types)
-            res.render('document/createdocument', { title: "Document Create Page", types })
+            models.Application.findAll()
+                .then(applications => {
+                    console.log(applications)
+                    models.Category.findAll()
+                        .then(categories => {
+                            res.render('document/createdocument', { title: "Document Create Page", types, applications, categories })
+                        })
+                })
         })
     
 }
 
-
 const documentCreatePost = (req, res, next) => {
 
+    console.log(req.body)
     models.Document.create({
         subject: req.body.subject,
         description: req.body.description,
@@ -26,7 +32,8 @@ const documentCreatePost = (req, res, next) => {
             //     message: "Category created successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/document/documents')
+            // res.redirect('/documentation/document/documents')
+            res.send("Document created successfully")
         })
         .catch(err => console.log(err))
 }

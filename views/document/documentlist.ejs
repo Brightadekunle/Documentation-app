@@ -1,0 +1,18 @@
+<section id="gigs" class="container">
+    <h1>All Gigs</h1>
+
+    <% documents.forEach(document => { %>
+    <div class="gig">
+        <h3><%= document.subject %></h3>
+        <p><%= document.description %></p>
+        <ul>
+            <li>Category: <%= document.category %></li>
+            <li><a href="/documentation/document/<%= document.id %>" class="btn btn-reverse">Detail</a></li>
+        </ul>
+        <div class="tech">
+            <small>Type: <span><%= document.type %></span></small>
+        </div>
+    </div>
+    <% }) %>
+
+</section>
