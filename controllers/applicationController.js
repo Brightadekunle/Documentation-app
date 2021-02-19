@@ -1,81 +1,76 @@
 const models = require('../models')
 
-const employeeCreateGet = (req, res, next) => {
-    res.render('employee/createEmployee', { title: "Employee Create Page" })
+const applicationCreateGet = (req, res, next) => {
+    console.log("Application creation................")
+    res.render('application/createapplication', { title: "Application Create Page" })
 }
 
 
-const employeeCreatePost = (req, res, next) => {
+const applicationCreatePost = (req, res, next) => {
 
-    models.Employee.create({
+    models.Application.create({
         name: req.body.name,
-        email: req.body.email,
-        department: req.body.department,
-        role: req.body.role,
     })
-        .then(employee => {
+        .then(application => {
             // res.status(201).json({
             //     message: "Category created successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/employee/employees')
+            // res.redirect('/documentation/application/applications')
+            res.send("Application created successfully")
+        })
+        .catch(err => console.log(err))
+}
+
+const applicationUpdateGet = (req, res, next) => {
+    models.Application.findByPk(req.params.application_id)
+        .then(application => {
+            res.render('application/updateapplication', { title: "Application Update Page", application: application })
         })
         .catch(err => console.log(err))
 }
 
 
-const employeeUpdateGet = (req, res, next) => {
-    models.Employee.findByPk(req.params.employee_id)
-        .then(employee => {
-            res.render('updateEmployee', { title: "Employee Update Page", employee: employee })
-        })
-        .catch(err => console.log(err))
-}
+const applicationUpdatePost = (req, res, next) => {
 
-
-const employeeUpdatePost = (req, res, next) => {
-
-    models.Employee.update({
+    models.Application.update({
         name: req.body.name,
-        email: req.body.email,
-        department: req.body.department,
-        role: req.body.role,
     }, {
         where: {
-            id: req.params.employee_id
+            id: req.params.application_id
         }
     })
-        .then(employee => {
+        .then(application => {
             // console.log(post)
             // res.status(200).json({
             //     message: "category updated successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/employee/employees')
+            res.redirect('/documentation/application/applications')
         })
         .catch(err => console.log(err))
 }
 
-const employeeDeletePost = (req, res, next) => {
-    models.Employee.destroy({
+const applicationDeletePost = (req, res, next) => {
+    models.Application.destroy({
         where: {
-            id: req.params.employee_id
+            id: req.params.application_id
         }
     })
-        .then(employee => {
+        .then(application => {
             // console.log(category)
             // res.status(200).json({
             //     message: "Category deleted successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/employee/employees')
+            res.redirect('/documentation/application/applications')
         })
         .catch(err => console.log(err))
 }
 
 
-const employeeDetailOneGet = (req, res, next) => {
-    // models.Type.findByPk(req.params.type_id)
+const applicationDetailOneGet = (req, res, next) => {
+    // models.Type.findByPk(req.params.application_id)
     //     .then(category => {
             
     //         models.DocumentCategory.findAll({
@@ -93,25 +88,25 @@ const employeeDetailOneGet = (req, res, next) => {
 }
 
 
-const employeeDetailAllGet = (req, res, next) => {
+const applicationDetailAllGet = (req, res, next) => {
 
-    models.Employee.findAll()
-        .then(employees => {
+    models.Application.findAll()
+        .then(applications => {
             // res.status(200).json({
             //     message: "This is the list of all categories",
             //     categories: categories
             // })
-            res.render('typelist', { title: "Employee List", employees })
+            res.render('applicationlist', { title: "Application List", applications })
         })
         .catch(err => console.log(err))
 }
 
 module.exports = {
-    employeeCreateGet,
-    employeeCreatePost,
-    employeeUpdateGet,
-    employeeUpdatePost,
-    employeeDeletePost,
-    employeeDetailOneGet,
-    employeeDetailAllGet,
+    applicationCreateGet,
+    applicationCreatePost,
+    applicationUpdateGet,
+    applicationUpdatePost,
+    applicationDeletePost,
+    applicationDetailOneGet,
+    applicationDetailAllGet,   
 }

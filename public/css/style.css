@@ -1,8 +1,10 @@
 body {
-  font-family: "Libre Franklin";
-  /* background-image: url("../images/pexels-negative-space-160107.jpg");
-  background-size: cover; */
-  background-color: #faf7f6;
+  font-family: "Libre Franklin", "Montserrat", "Raleway", sans-serif;
+  background: url("../images/showcase.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  /* background-color: #faf7f6; */
   color: #fff;
 }
 
@@ -10,12 +12,20 @@ img {
   max-width: 100%;
 }
 
+h3 {
+  text-transform: uppercase;
+  font-family: "Montserrat ExtraBold";
+  font-size: 26px;
+  text-align: center;
+  color: #fff;
+}
+
 .wrapper {
-  width: 450px;
+  width: 500px;
   /* height: 90px; */
-  margin: 180px auto;
+  margin: 80px auto;
   /* background-image: url("../images/bg-boost-desktop.svg"); */
-  background-color: #fff;
+  /* background-color: #fff; */
   background-size: cover;
   padding: 25px 40px;
   border-radius: 7px;
@@ -45,16 +55,16 @@ button {
   width: 100%;
   border: none;
   color: #fff;
-  padding: 12px 23px;
+  padding: 15px 23px;
   border-radius: 10px;
   /* background-color: hsl(154, 59%, 51%); */
-  background-color: #777;
+  background-color: #64a5b7;
   cursor: pointer;
   letter-spacing: 1px;
   font-family: "Libre Franklin", sans-serif;
   /* border-bottom: 4px solid hsl(157, 89%, 41%); */
   border-bottom: #777;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 button:hover {
@@ -73,7 +83,8 @@ nav {
 }
 
 nav a {
-  color: #777;
+  color: #fff;
+  font-family: "Raleway";
 }
 
 .navbar-collapse {
@@ -83,4 +94,14 @@ nav a {
 
 .nav-item {
   margin-left: 40px;
+}
+
+.navbar-brand {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Montserrat";
+}
+
+.navbar-brand:hover {
+  color: #64a5b7;
 }

@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   },
   name: DataTypes.STRING
   });
+  
 
   Type.associate = (models) => {
     Type.hasMany(models.Document, { onDelete: "CASCADE", })

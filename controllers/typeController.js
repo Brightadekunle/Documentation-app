@@ -24,7 +24,7 @@ const typeCreatePost = (req, res, next) => {
 const typeUpdateGet = (req, res, next) => {
     models.Type.findByPk(req.params.type_id)
         .then(type => {
-            res.render('updatetype', { title: "Type Update Page", type: type })
+            res.render('type/updatetype', { title: "Type Update Page", type: type })
         })
         .catch(err => console.log(err))
 }

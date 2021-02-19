@@ -1,7 +1,12 @@
 const models = require('../models')
 
 const documentCreateGet = (req, res, next) => {
-    res.render('createDocument', { title: "Document Create Page" })
+    models.Type.findAll()
+        .then(types => {
+            console.log(types)
+            res.render('document/createdocument', { title: "Document Create Page", types })
+        })
+    
 }
 
 
@@ -14,7 +19,7 @@ const documentCreatePost = (req, res, next) => {
         ApplicationId: req.body.application,
         EmployeeId: req.body.employee,
         TypeId: req.body.type,
-        categoryId: req.body.category 
+        categoryId: req.body.category
     })
         .then(document => {
             // res.status(201).json({
@@ -29,7 +34,7 @@ const documentCreatePost = (req, res, next) => {
 const documentUpdateGet = (req, res, next) => {
     models.Document.findByPk(req.params.document_id)
         .then(document => {
-            res.render('updateDocument', { title: "Document Update Page", document: document })
+            res.render('updatedocument', { title: "Document Update Page", document: document })
         })
         .catch(err => console.log(err))
 }

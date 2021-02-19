@@ -41,13 +41,16 @@ app.use(function (req, res, next) {
 
 const typeRoutes = require('./routes/typeRoute')
 const categoryRoutes = require('./routes/categoryRoute')
-const documentRoutes = require('./routes/employeeRoute')
+const documentRoutes = require('./routes/documentRoute')
 const employeeRoutes = require('./routes/employeeRoute')
+const applicationRoutes = require('./routes/applicationRoute')
 
 app.use('/documentation/type', typeRoutes)
 app.use('/documentation/category', categoryRoutes)
 app.use('/documentation/document', documentRoutes)
 app.use('/documentation/employee', employeeRoutes)
+app.use('/documentation/application', applicationRoutes)
+
 
 
 // catch 404 and forward to error handler

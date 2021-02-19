@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const categoryCreateGet = (req, res, next) => {
-    res.render('createcategory', { title: "Category Create Page" })
+    res.render('category/createcategory', { title: "Category Create Page" })
 }
 
 
@@ -15,7 +15,8 @@ const categoryCreatePost = (req, res, next) => {
             //     message: "Category created successfully",
             //     Category: category
             // })
-            res.redirect('/documentation/category/categories')
+            // res.redirect('/documentation/category/categories')
+            res.send("Category created successfully")
         })
         .catch(err => console.log(err))
 }
