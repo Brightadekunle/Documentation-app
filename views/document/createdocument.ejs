@@ -16,10 +16,12 @@
                 <input type="text" name="employee" placeholder="Employee">
             </div>
             <div>
-                <input type="radio" id="" name="type" value="internally">
-                <label for="male">Internally</label><br>
-                <input type="radio" id="" name="type" value="externally">
-                <label for="female">Externally</label><br>
+                <% types.forEach(type => { %>
+                <select name="type" class="form-control">
+                    <option value=""><%= type.name %></option>
+                    <option value=""><%= type.name %></option>
+                </select>
+                <% }) %>
             </div>
             <div>
                 <input type="text" name="category" placeholder="Category">
