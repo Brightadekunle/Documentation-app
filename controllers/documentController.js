@@ -1,10 +1,11 @@
 const models = require('../models')
+const { selectOptions } = require('../config/customFunction')
+
 
 const documentCreateGet = (req, res, next) => {
-    console.log(req.user)
+    // console.log(req.user)
     models.Type.findAll()
         .then(types => {
-            console.log(types)
             models.Application.findAll()
                 .then(applications => {
                     models.Category.findAll()
@@ -18,7 +19,6 @@ const documentCreateGet = (req, res, next) => {
 
 const documentCreatePost = (req, res, next) => {
 
-    console.log(req.body)
     models.Document.create({
         subject: req.body.subject,
         description: req.body.description,
@@ -26,7 +26,7 @@ const documentCreatePost = (req, res, next) => {
         ApplicationId: req.body.application,
         EmployeeId: req.user.id,
         TypeId: req.body.type,
-        categoryId: req.body.category
+        CategoryId: req.body.category
     })
         .then(document => {
             // res.status(201).json({
@@ -34,15 +34,35 @@ const documentCreatePost = (req, res, next) => {
             //     Category: category
             // })
             // res.redirect('/documentation/document/documents')
-            res.send("Document created successfully")
+            // models.DocumentCategory.create({
+            //     DocumentId: parseInt(document.id),
+            //     CategoryId: parseInt(req.body.category)
+            // })
+            //     .then(documentCategory => {
+            //         // res.send("Document created successfully")
+            //         res.redirect('/documentation/document/documents')
+            //     })
+            res.redirect('/documentation/document/documents')
         })
         .catch(err => console.log(err))
 }
 
 const documentUpdateGet = (req, res, next) => {
-    models.Document.findByPk(req.params.document_id)
+    models.Document.findByPk(req.params.document_id, {
+        include: [models.Category, models.Type, models.Application, models.Employee]
+    })
         .then(document => {
-            res.render('document/updatedocument', { title: "Document Update Page", document: document })
+            
+            models.Type.findAll()
+                .then(types => {
+                    models.Application.findAll()
+                        .then(applications => {
+                            models.Category.findAll()
+                                .then(categories => {
+                                    res.render('document/updatedocument', { title: "Document Update Page", types, applications, categories, document, selectOptions })
+                                })
+                        })
+                })
         })
         .catch(err => console.log(err))
 }
@@ -57,14 +77,13 @@ const documentUpdatePost = (req, res, next) => {
         application: req.body.application,
         EmployeeId: req.body.employee,
         TypeId: req.body.type,
-        categoryId: req.body.category 
+        CategoryId: req.body.category 
     }, {
         where: {
             id: req.params.document_id
         }
     })
         .then(document => {
-            // console.log(post)
             // res.status(200).json({
             //     message: "category updated successfully",
             //     Category: category
@@ -93,15 +112,23 @@ const documentDeletePost = (req, res, next) => {
 
 
 const documentDetailOneGet = (req, res, next) => {
-    models.Document.findByPk(req.params.document_id)
+    models.Document.findByPk(req.params.document_id, {
+        include: [models.Employee, models.Type]
+    })
         .then(document => {
-            if (document.type == "Internal"){
-
+            // console.log(document.Employee, document.Type)
+            if (document.Type.name == "Internally"){
+                if (req.user.role == "Manager" || document.Employee.department == req.user.department){
+                    res.render('document/documentdetails', { title: "Document Detail Page", document })
+                } else {
+                    res.status(404).json({
+                        msg: "You cannot read/update/delete this document"
+                    })
+                }
             }
             else {
                 res.render('document/documentdetails', { title: "Document Detail Page", document })
             }
-            
             // models.DocumentCategory.findAll({
             //     include: [models.Post],
             //     where: {

@@ -8,6 +8,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const models = require('./models')
 const initializePassport = require('./config/passport')
+const { selectOptions } = require('./config/customFunction')
 
 
 var app = express();
@@ -17,8 +18,9 @@ initializePassport(passport)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs', { helpers: selectOptions });
 app.use(ejsLayout)
+
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }))

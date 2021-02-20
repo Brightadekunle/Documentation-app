@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Category.associate = (models) => {
-    Category.belongsToMany(models.Document, { onDelete: "CASCADE", through: 'DocumentCategory' })
+    Category.hasMany(models.Document, { onDelete: "CASCADE" })
   }
   
   return Category;

@@ -4,26 +4,51 @@
     <form action="" method="POST">
         <div class="flex">
             <div>
-                <input type="text" name="subject" placeholder="Subject">
+                <input type="text" name="subject" placeholder="Subject" value="<%= document.subject %>">
             </div>
             <div>
-                <input type="text" name="status" placeholder="Status">
+                <input type="text" name="status" placeholder="Status" value="<%= document.status %>">
             </div>
             <div>
-                <input type="text" name="application" placeholder="Application">
+                <input type="text" name="description" placeholder="Description" value="<%= document.description %>">
+            </div>
+            <!-- <div>
+                <input type="text" name="application" placeholder="Application" value="<%= document.Application.name %>">
             </div>
             <div>
-                <input type="text" name="employee" placeholder="Employee">
+                <input type="text" name="type" placeholder="Type" value="<%= document.Type.name %>">
             </div>
             <div>
-                <input type="text" name="type" placeholder="Type">
+                <input type="text" name="category" placeholder="Category" value="<%= document.Category.name %>">
+            </div> -->
+
+            <div>
+                <h4>Select a Category</h4>
+                <select name="category" class="form-control">
+                    <% console.log(selectOptions) %>
+                        <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }) %>
+                </select>
             </div>
             <div>
-                <input type="text" name="category" placeholder="Category">
+                <h4>Select an Application</h4>
+                <select name="application" class="form-control">
+                    <% applications.forEach(application => { %>
+                    <option value="<%= application.id %>"><%= application.name %></option>
+                    <% }) %>
+                </select>
             </div>
             <div>
-                <input type="text" name="description" placeholder="Description">
+                <h4>Select a Type</h4>
+                <% types.forEach(type => { %>
+                <label for="" class="radio">
+                    <input type="radio" class="radio__input" name="type" value="<%= type.id %>">
+                    <label for=""><%= type.name %></label>
+                </label>
+                <% }) %>
             </div>
+            
             <div>
                 <button type="submit" class="submit__button">Submit</button>
             </div>

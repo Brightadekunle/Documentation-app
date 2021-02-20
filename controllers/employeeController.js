@@ -73,8 +73,7 @@ const employeeCreatePost = (req, res, next) => {
                             //     Author: author
                             // })
                             req.flash('success_message', `${employee.role} created successfully`)
-                            // res.redirect('/documentation/employee/')
-                            res.send("Employee created successfully")
+                            res.redirect('/documentation/employee/login')
                         })
                         .catch(err => console.log(err))
     }
