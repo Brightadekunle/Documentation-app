@@ -3,15 +3,9 @@
 
     <% documents.forEach(document => { %>
     <div class="gig">
-        <h3><%= document.subject %></h3>
+        <h3 style="display: flex; justify-content: flex-start;"><%= document.subject %></h3>
         <p><%= document.description %></p>
-        <ul>
-            <li>Category: <%= document.category %></li>
-            <li><a href="/documentation/document/<%= document.id %>" class="btn btn-reverse">Detail</a></li>
-        </ul>
-        <div class="tech">
-            <small>Type: <span><%= document.type %></span></small>
-        </div>
+        <p><a href="/documentation/document/<%= document.id %>" class="btn btn-reverse">Details</a></p>
     </div>
     <% }) %>
 

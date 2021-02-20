@@ -1,21 +1,50 @@
 
 <article class="media content-section">
-  <% let image =  baseUrl + post.Author.profilePicture %>
     <div class="media-body">
       <div class="article-metadata">
-        <!-- <a class="mr-2" href="/blog/author/<%= post.Author.id %>"><%= post.Author.username %></a> -->
-        <small class="text-muted"><%= post.createdAt %></small>
-        <% if (loggedInUser) { %>
-          <% if (post.Author.username == loggedInUser.username) { %>
+        <small class="text-muted"><%= document.createdAt %></small>
             <div>
-              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/blog/post/update/<%= post.id %>">Update</a>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/documentation/document/update/<%= document.id %>">Update</a>
               <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
             </div>
-          <% } %>
-        <% } else { %>
-        <% } %>
       </div>
-      <h2 class="article-title"><%= post.post_title %></h2>
-      <p class="article-content"><%= post.post_body %></p>
+      <h2 class="article-title"><%= document.subject %></h2>
+      <p class="article-content"><%= document.description %></p>
     </div>
   </article>
+
+  <div class="my-4 content-section__1">
+    <div class="card-header">
+        Leave a comment
+    </div>
+
+    <div class="card-body">
+        <form action="" method="POST">
+            <div class="form-group">
+                <textarea name="comment" class="form-control"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Post comment" style="background-color: #64a5b7;">
+        </form>
+    </div>
+</div>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

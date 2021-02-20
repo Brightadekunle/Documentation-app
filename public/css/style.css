@@ -69,7 +69,7 @@ input:focus {
   outline: none;
   border: 1px solid hsl(248, 32%, 49%);
 }
-button {
+.submit__button {
   width: 100%;
   border: none;
   color: #fff;
@@ -189,4 +189,67 @@ nav a {
 
 .gig .tech span {
   color: #568c9b;
+}
+
+.btn {
+  color: #fff;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  transition: all 0.7s;
+}
+
+.btn:hover {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: #fff;
+}
+
+.btn-reverse {
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-reverse:hover {
+  background: var(--primary-hover-color);
+  border: 1px solid var(--primary-hover-color);
+}
+
+.content-section {
+  width: 800px;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin: 20px 240px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.content-section__1 {
+  width: 600px;
+  margin-left: 240px;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
 }

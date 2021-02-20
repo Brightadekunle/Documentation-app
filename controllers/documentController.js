@@ -42,7 +42,7 @@ const documentCreatePost = (req, res, next) => {
 const documentUpdateGet = (req, res, next) => {
     models.Document.findByPk(req.params.document_id)
         .then(document => {
-            res.render('updatedocument', { title: "Document Update Page", document: document })
+            res.render('document/updatedocument', { title: "Document Update Page", document: document })
         })
         .catch(err => console.log(err))
 }
@@ -93,21 +93,28 @@ const documentDeletePost = (req, res, next) => {
 
 
 const documentDetailOneGet = (req, res, next) => {
-    // models.Type.findByPk(req.params.type_id)
-    //     .then(category => {
+    models.Document.findByPk(req.params.document_id)
+        .then(document => {
+            if (document.type == "Internal"){
+
+            }
+            else {
+                res.render('document/documentdetails', { title: "Document Detail Page", document })
+            }
             
-    //         models.DocumentCategory.findAll({
-    //             include: [models.Post],
-    //             where: {
-    //                 CategoryId: category.id
-    //             }
-    //         })
-    //             .then(posts => {
-    //                     res.render('categorydetail', { title: "Category Detail Page", category, posts })
-    //             })
-    //             .catch(err => console.log(err))
-    //     })
-    //     .catch(err => console.log(err))
+            // models.DocumentCategory.findAll({
+            //     include: [models.Post],
+            //     where: {
+            //         CategoryId: category.id
+            //     }
+            // })
+            //     .then(posts => {
+            //             res.render('categorydetail', { title: "Category Detail Page", category, posts })
+            //     })
+            //     .catch(err => console.log(err))
+            
+        })
+        .catch(err => console.log(err))
 }
 
 
