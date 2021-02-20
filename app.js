@@ -4,10 +4,15 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 const ejsLayout = require('express-ejs-layouts')
 const session = require('cookie-session')
+const flash = require('connect-flash')
+const passport = require('passport')
 const models = require('./models')
+const initializePassport = require('./config/passport')
 
 
 var app = express();
+
+initializePassport(passport)
 
 
 // view engine setup
@@ -32,10 +37,16 @@ app.use(session({
   }
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
 // git remote add origin https://github.com/Brightadekunle/Nodejs-Instagramclone.git
 
 app.use(function (req, res, next) {
-  // res.locals.login = req.isAuthenticated()
+  res.locals.login = req.isAuthenticated()
+  res.locals.error = req.flash('error')
+  res.locals.loggedInUser = req.user
   next()
 })
 

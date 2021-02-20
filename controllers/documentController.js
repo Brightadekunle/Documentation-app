@@ -1,11 +1,12 @@
 const models = require('../models')
 
 const documentCreateGet = (req, res, next) => {
+    console.log(req.user)
     models.Type.findAll()
         .then(types => {
+            console.log(types)
             models.Application.findAll()
                 .then(applications => {
-                    console.log(applications)
                     models.Category.findAll()
                         .then(categories => {
                             res.render('document/createdocument', { title: "Document Create Page", types, applications, categories })
@@ -23,7 +24,7 @@ const documentCreatePost = (req, res, next) => {
         description: req.body.description,
         status: req.body.status,
         ApplicationId: req.body.application,
-        EmployeeId: req.body.employee,
+        EmployeeId: req.user.id,
         TypeId: req.body.type,
         categoryId: req.body.category
     })
@@ -118,10 +119,11 @@ const documentDetailAllGet = (req, res, next) => {
             //     message: "This is the list of all categories",
             //     categories: categories
             // })
-            res.render('documentlist', { title: "Document List", documents })
+            res.render('document/documentlist', { title: "Document List", documents })
         })
         .catch(err => console.log(err))
 }
+
 
 module.exports = {
     documentCreateGet,

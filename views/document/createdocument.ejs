@@ -10,10 +10,8 @@
                 <input type="text" name="status" placeholder="Status">
             </div>
             <div>
-                <input type="text" name="employee" placeholder="Employee">
-            </div>
-            <div>
-                <input type="text" name="description" placeholder="Description">
+                <!-- <input type="text" name="description" placeholder="Description"> -->
+                <textarea name="description" placeholder="Description" class="description"></textarea>
             </div>
             <div>
                 <h4>Select a Category</h4>
@@ -35,8 +33,7 @@
                 <h4>Select a Type</h4>
                 <% types.forEach(type => { %>
                 <label for="" class="radio">
-                    <input type="radio" class="radio__input" name="type">
-                    <div class="radio__radio"></div>
+                    <input type="radio" class="radio__input" name="type" value="<%= type.id %>">
                     <label for=""><%= type.name %></label>
                 </label>
                 <% }) %>

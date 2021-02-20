@@ -8,6 +8,12 @@ router.get('/create', employeeController.employeeCreateGet)
 
 router.post('/create', employeeController.employeeCreatePost)
 
+router.get('/login', employeeController.employeeSigninGet)
+
+router.post('/login', employeeController.employeeSigninPost)
+
+router.get('/logout', employeeController.employeeLogout)
+
 router.get('/update/:employee_id', employeeController.employeeUpdateGet)
 
 router.post('/update/:employee_id', employeeController.employeeUpdatePost)
