@@ -25,7 +25,6 @@
             <div>
                 <h4>Select a Category</h4>
                 <select name="category" class="form-control">
-                    <% console.log(selectOptions) %>
                         <% categories.forEach(category => { %>
                         <option value="<%= category.id %>"><%= category.name %></option>
                         <% }) %>

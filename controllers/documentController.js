@@ -4,7 +4,8 @@ const { selectOptions } = require('../config/customFunction')
 
 const documentCreateGet = (req, res, next) => {
     // console.log(req.user)
-    models.Type.findAll()
+    if (req.user){
+        models.Type.findAll()
         .then(types => {
             models.Application.findAll()
                 .then(applications => {
@@ -14,7 +15,11 @@ const documentCreateGet = (req, res, next) => {
                         })
                 })
         })
-    
+    } else {
+        res.status(403).json({
+            msg: "You must be logged in to create a document"
+        })
+    }
 }
 
 const documentCreatePost = (req, res, next) => {
@@ -52,7 +57,6 @@ const documentUpdateGet = (req, res, next) => {
         include: [models.Category, models.Type, models.Application, models.Employee]
     })
         .then(document => {
-            
             models.Type.findAll()
                 .then(types => {
                     models.Application.findAll()
@@ -113,33 +117,27 @@ const documentDeletePost = (req, res, next) => {
 
 const documentDetailOneGet = (req, res, next) => {
     models.Document.findByPk(req.params.document_id, {
-        include: [models.Employee, models.Type]
+        include: [models.Employee, models.Type, models.Comment]
     })
         .then(document => {
-            // console.log(document.Employee, document.Type)
-            if (document.Type.name == "Internally"){
-                if (req.user.role == "Manager" || document.Employee.department == req.user.department){
-                    res.render('document/documentdetails', { title: "Document Detail Page", document })
-                } else {
-                    res.status(404).json({
-                        msg: "You cannot read/update/delete this document"
-                    })
-                }
-            }
-            else {
-                res.render('document/documentdetails', { title: "Document Detail Page", document })
-            }
-            // models.DocumentCategory.findAll({
-            //     include: [models.Post],
-            //     where: {
-            //         CategoryId: category.id
-            //     }
-            // })
-            //     .then(posts => {
-            //             res.render('categorydetail', { title: "Category Detail Page", category, posts })
-            //     })
-            //     .catch(err => console.log(err))
-            
+            // console.log(document.Employee)
+            models.Comment.findAll({
+                include: [models.Employee]
+            })
+                .then(comments => {
+                    if (document.Type.name == "Internally"){
+                        if (req.user.role == "Manager" || document.Employee.department == req.user.department){
+                            res.render('document/documentdetails', { title: "Document Detail Page", document, comments })
+                        } else {
+                            res.status(404).json({
+                                msg: "You cannot read/update/delete this document"
+                            })
+                        }
+                    }
+                    else {
+                        res.render('document/documentdetails', { title: "Document Detail Page", document, comments })
+                    }
+                })  
         })
         .catch(err => console.log(err))
 }

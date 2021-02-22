@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     Document.belongsTo(models.Employee, { onDelete: "CASCADE", })
     Document.belongsTo(models.Type, { onDelete: "CASCADE", })
     Document.belongsTo(models.Category, { onDelete: "CASCADE" })
+    Document.hasMany(models.Comment, { onDelete: "CASCADE" })
 }
 
   return Document;

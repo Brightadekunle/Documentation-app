@@ -253,3 +253,7 @@ a.article-title:hover {
   border: 1px solid #dddddd;
   border-radius: 3px;
 }
+
+.comments {
+  margin-left: 240px;
+}
