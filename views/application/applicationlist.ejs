@@ -1,0 +1,13 @@
+<div class="container">
+    <a class="btn btn-primary" href="/documentation/application/create">Create Application</a>
+    <br>
+    <br>
+    <% applications.forEach(function(application) { %>
+        <li style="list-style: none;">
+            <h4><a href="/documentation/application/<%= application.id %>" class="name"><%= application.name %></a></h4>
+            <a class="btn btn-primary" href="/documentation/application/update/<%= application.id %>">Edit Application</a> | <a class="btn btn-danger" href="/documentation/application/delete/<%= application.id %>">Delete Application</a>
+        </li>
+        <br/>
+        <br>
+    <% }); %>
+</div>

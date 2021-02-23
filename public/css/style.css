@@ -257,3 +257,12 @@ a.article-title:hover {
 .comments {
   margin-left: 240px;
 }
+
+.name {
+  color: #fff;
+}
+
+.name:hover {
+  color: #64a5b7;
+  text-decoration: none;
+}

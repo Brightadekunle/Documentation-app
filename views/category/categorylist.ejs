@@ -1,0 +1,13 @@
+<div class="container">
+    <a class="btn btn-primary" href="/documentation/category/create">Create Category</a>
+    <br>
+    <br>
+    <% categories.forEach(function(category) { %>
+        <li style="list-style: none;">
+            <h4><a href="/documentation/category/<%= category.id %>" class="name"><%= category.name %></a></h4>
+            <a class="btn btn-primary" href="/documentation/category/update/<%= category.id %>">Edit Category</a> | <a class="btn btn-danger" href="/documentation/category/delete/<%= category.id %>">Delete Category</a>
+        </li>
+        <br/>
+        <br>
+    <% }); %>
+</div>

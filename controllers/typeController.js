@@ -11,12 +11,7 @@ const typeCreatePost = (req, res, next) => {
         name: req.body.name,
     })
         .then(type => {
-            // res.status(201).json({
-            //     message: "Category created successfully",
-            //     Category: category
-            // })
-            // res.redirect('/documentation/type/types')
-            res.send("Type created successfully")
+            res.redirect('/documentation/type/types')
         })
         .catch(err => console.log(err))
 }
@@ -40,11 +35,6 @@ const typeUpdatePost = (req, res, next) => {
         }
     })
         .then(type => {
-            // console.log(post)
-            // res.status(200).json({
-            //     message: "category updated successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/type/types')
         })
         .catch(err => console.log(err))
@@ -57,11 +47,6 @@ const typeDeletePost = (req, res, next) => {
         }
     })
         .then(type => {
-            // console.log(category)
-            // res.status(200).json({
-            //     message: "Category deleted successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/type/types')
         })
         .catch(err => console.log(err))
@@ -91,11 +76,7 @@ const typeDetailAllGet = (req, res, next) => {
 
     models.Type.findAll()
         .then(types => {
-            // res.status(200).json({
-            //     message: "This is the list of all categories",
-            //     categories: categories
-            // })
-            res.render('typelist', { title: "Type List", types })
+            res.render('type/typelist', { title: "Type List", types })
         })
         .catch(err => console.log(err))
 }

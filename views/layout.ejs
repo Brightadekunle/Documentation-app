@@ -11,25 +11,34 @@
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
 
     <% if (title) { %>
-        <title>Documentation App - <%= title %></title>
+        <title>DocuTrack - <%= title %></title>
     <% } else { %>
-        <title>Documentation App</title>
+        <title>DocuTrack</title>
     <% } %>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Documentation App</a>
+          <a class="navbar-brand" href="/documentation/document/documents">DocuTrack</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/documentation/document/documents">Home</a>
+                <a class="nav-link active" aria-current="page" href="/documentation/document/create">Document</a>
               </li>
 
               <% if (login) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/documentation/type/types">Type</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/documentation/category/categories">Category</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/documentation/application/applications">Application</a>
+                </li>
               <li class="nav-item">
                 <a class="nav-link" href="/documentation/employee/logout">Logout</a>
               </li>
