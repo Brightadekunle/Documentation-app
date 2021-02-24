@@ -54,21 +54,14 @@ const typeDeletePost = (req, res, next) => {
 
 
 const typeDetailOneGet = (req, res, next) => {
-    // models.Type.findByPk(req.params.type_id)
-    //     .then(category => {
-            
-    //         models.DocumentCategory.findAll({
-    //             include: [models.Post],
-    //             where: {
-    //                 CategoryId: category.id
-    //             }
-    //         })
-    //             .then(posts => {
-    //                     res.render('categorydetail', { title: "Category Detail Page", category, posts })
-    //             })
-    //             .catch(err => console.log(err))
-    //     })
-    //     .catch(err => console.log(err))
+    models.Type.findByPk(req.params.type_id, {
+        include: [models.Document]
+    })
+        .then(type => {
+            // console.log(category.Documents)
+            res.render('type/typedetail', { title: "Type Detail Page", type: type })
+        })
+        .catch(err => console.log(err))
 }
 
 

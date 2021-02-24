@@ -1,0 +1,18 @@
+
+    <h4 style="margin-left: 240px;">Type - <%= type.name %></h4>
+    <% type.Documents.forEach(document => { %>
+  
+    <article class="media content-section">
+      <!-- <img class="rounded-circle account-img" src="<%=  %>" style="object-fit: cover;"> -->
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#"><%=  %></a>
+          <small class="text-muted"><%= document.createdAt %></small>
+        </div>
+        <h2><a class="article-title" href="/documentation/document/<%= document.id %>"><%= document.subject %></a></h2>
+        <p class="article-content"><%= document.description %></p>
+      </div>
+    </article>
+    <% }) %>
+
+    

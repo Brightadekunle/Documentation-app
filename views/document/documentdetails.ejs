@@ -4,7 +4,7 @@
       <div class="article-metadata">
         <small class="text-muted"><%= document.createdAt %></small>
         <% if (loggedInUser) { %>
-          <% if (document.Employee.name == loggedInUser.name || loggedInUser.role == "Manager") { %>
+          <% if (document.Employee.name == loggedInUser.name || loggedInUser.role == "Manager" || document.Type.name == "Externally") { %>
             <div>
               <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/documentation/document/update/<%= document.id %>">Update</a>
               <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
@@ -14,6 +14,7 @@
         <% } %>
       </div>
       <h2 class="article-title"><%= document.subject %></h2>
+      <p>Type: <%= document.Type.name %> || Employee Department: <%= document.Employee.department %> </p>
       <p class="article-content"><%= document.description %></p>
     </div>
   </article>

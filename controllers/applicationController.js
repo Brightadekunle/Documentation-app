@@ -54,21 +54,14 @@ const applicationDeletePost = (req, res, next) => {
 
 
 const applicationDetailOneGet = (req, res, next) => {
-    // models.Type.findByPk(req.params.application_id)
-    //     .then(category => {
-            
-    //         models.DocumentCategory.findAll({
-    //             include: [models.Post],
-    //             where: {
-    //                 CategoryId: category.id
-    //             }
-    //         })
-    //             .then(posts => {
-    //                     res.render('categorydetail', { title: "Category Detail Page", category, posts })
-    //             })
-    //             .catch(err => console.log(err))
-    //     })
-    //     .catch(err => console.log(err))
+    models.Application.findByPk(req.params.application_id, {
+        include: [models.Document]
+    })
+        .then(application => {
+            // console.log(category.Documents)
+            res.render('application/applicationdetail', { title: "Application Detail Page", application: application })
+        })
+        .catch(err => console.log(err))
 }
 
 

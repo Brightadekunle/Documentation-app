@@ -4,7 +4,7 @@
     <br>
     <% types.forEach(function(type) { %>
         <li style="list-style: none;">
-            <h4><a href="/documentation/category/<%= type.id %>" class="name"><%= type.name %></a></h4>
+            <h4><a href="/documentation/type/<%= type.id %>" class="name"><%= type.name %></a></h4>
             <a class="btn btn-primary" href="/documentation/type/update/<%= type.id %>">Edit Type</a> | <a class="btn btn-danger" href="/documentation/type/delete/<%= type.id %>">Delete type</a>
         </li>
         <br/>

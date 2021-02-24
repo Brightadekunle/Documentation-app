@@ -125,18 +125,8 @@ const documentDetailOneGet = (req, res, next) => {
                 include: [models.Employee]
             })
                 .then(comments => {
-                    if (document.Type.name == "Internally"){
-                        if (req.user.role == "Manager" || document.Employee.department == req.user.department){
-                            res.render('document/documentdetails', { title: "Document Detail Page", document, comments })
-                        } else {
-                            res.status(404).json({
-                                msg: "You cannot read/update/delete this document"
-                            })
-                        }
-                    }
-                    else {
-                        res.render('document/documentdetails', { title: "Document Detail Page", document, comments })
-                    }
+                    res.render('document/documentdetails', { title: "Document Detail Page", document, comments })
+                   
                 })  
         })
         .catch(err => console.log(err))
