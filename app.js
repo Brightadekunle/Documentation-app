@@ -91,3 +91,5 @@ const PORT = process.env.PORT || 8080
 models.sequelize.sync().then(() => {
   app.listen(PORT, console.log(`listening on PORT ${PORT}`))
 })
+
+// https://github.com/Brightadekunle/Documentation-app.git
