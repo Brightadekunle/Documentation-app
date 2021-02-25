@@ -4,10 +4,10 @@
       <div class="article-metadata">
         <small class="text-muted"><%= document.createdAt %></small>
         <% if (loggedInUser) { %>
-          <% if (document.Employee.name == loggedInUser.name || loggedInUser.role == "Manager" || document.Type.name == "Externally") { %>
+          <% if (document.Employee.name == loggedInUser.name || loggedInUser.role == "Manager" || document.Type.name == "External") { %>
             <div>
-              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/documentation/document/update/<%= document.id %>">Update</a>
-              <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+              <a style="border: none;" class="btn btn-secondary btn-sm mt-1 mb-1" href="/documentation/document/update/<%= document.id %>">Update</a>
+              <button type="button" style="border: none;" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
             </div>
             <% } %>
         <% } else { %>
@@ -16,9 +16,15 @@
       <h2 class="article-title"><%= document.subject %></h2>
       <p>Type: <%= document.Type.name %> || Employee Department: <%= document.Employee.department %> </p>
       <p class="article-content"><%= document.description %></p>
+      <% if (loggedInUser) { %>
+        <% if (document.Employee.name == loggedInUser.name) { %>
+          <a style="border: none;" class="btn btn-success btn-sm mt-1 mb-1" href="/documentation/document/changeStatus/<%= document.id %>">Change status</a>
+        <% } %>
+      <% } %>
     </div>
   </article>
 
+  <% if (loggedInUser) { %>
   <div class="my-4 content-section__1">
     <div class="card-header">
         Leave a comment
@@ -27,7 +33,7 @@
     <div class="card-body">
         <form action="/documentation/comment/create/document/<%= document.id %>" method="POST">
             <div class="form-group">
-                <textarea name="comment" class="form-control"></textarea>
+                <textarea name="comment" class="form-control" style="background-color: transparent; color: #fff;"></textarea>
             </div>
             <input type="submit" class="btn btn-primary" value="Post comment" style="background-color: #64a5b7;">
         </form>
@@ -53,7 +59,7 @@
   </div>
   <% }) %>
 </div>
-
+<% } %>
 
    <!-- Modal -->
    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

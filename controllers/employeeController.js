@@ -1,8 +1,6 @@
 const models = require('../models')
 const bcrypt = require('bcrypt-nodejs')
 const passport = require('passport')
-const path = require('path')
-// const { isEmpty } = require('../config/customFunction')
 
 const employeeCreateGet = (req, res, next) => {
     res.render('employee/createEmployee', { title: "Employee Create Page", success_msg: "", error_msg: "" })
@@ -68,10 +66,6 @@ const employeeCreatePost = (req, res, next) => {
                         password: hash,
                     })
                         .then(employee => {
-                            // res.status(201).json({
-                            //     message: "Author created successfully",
-                            //     Author: author
-                            // })
                             req.flash('success_message', `${employee.role} created successfully`)
                             res.redirect('/documentation/employee/login')
                         })
@@ -128,11 +122,6 @@ const employeeUpdatePost = (req, res, next) => {
         }
     })
         .then(employee => {
-            // console.log(post)
-            // res.status(200).json({
-            //     message: "category updated successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/employee/employees')
         })
         .catch(err => console.log(err))
@@ -145,11 +134,6 @@ const employeeDeletePost = (req, res, next) => {
         }
     })
         .then(employee => {
-            // console.log(category)
-            // res.status(200).json({
-            //     message: "Category deleted successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/employee/employees')
         })
         .catch(err => console.log(err))
@@ -179,10 +163,6 @@ const employeeDetailAllGet = (req, res, next) => {
 
     models.Employee.findAll()
         .then(employees => {
-            // res.status(200).json({
-            //     message: "This is the list of all categories",
-            //     categories: categories
-            // })
             res.render('typelist', { title: "Employee List", employees })
         })
         .catch(err => console.log(err))

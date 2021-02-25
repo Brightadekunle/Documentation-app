@@ -16,9 +16,7 @@ const documentCreateGet = (req, res, next) => {
                 })
         })
     } else {
-        res.status(403).json({
-            msg: "You must be logged in to create a document"
-        })
+        res.render('error', { title: "Error 403", message: "You must be logged in to create a document" })
     }
 }
 
@@ -34,19 +32,6 @@ const documentCreatePost = (req, res, next) => {
         CategoryId: req.body.category
     })
         .then(document => {
-            // res.status(201).json({
-            //     message: "Category created successfully",
-            //     Category: category
-            // })
-            // res.redirect('/documentation/document/documents')
-            // models.DocumentCategory.create({
-            //     DocumentId: parseInt(document.id),
-            //     CategoryId: parseInt(req.body.category)
-            // })
-            //     .then(documentCategory => {
-            //         // res.send("Document created successfully")
-            //         res.redirect('/documentation/document/documents')
-            //     })
             res.redirect('/documentation/document/documents')
         })
         .catch(err => console.log(err))
@@ -88,10 +73,6 @@ const documentUpdatePost = (req, res, next) => {
         }
     })
         .then(document => {
-            // res.status(200).json({
-            //     message: "category updated successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/document/documents')
         })
         .catch(err => console.log(err))
@@ -104,11 +85,6 @@ const documentDeletePost = (req, res, next) => {
         }
     })
         .then(document => {
-            // console.log(category)
-            // res.status(200).json({
-            //     message: "Category deleted successfully",
-            //     Category: category
-            // })
             res.redirect('/documentation/document/documents')
         })
         .catch(err => console.log(err))
@@ -137,11 +113,31 @@ const documentDetailAllGet = (req, res, next) => {
 
     models.Document.findAll()
         .then(documents => {
-            // res.status(200).json({
-            //     message: "This is the list of all categories",
-            //     categories: categories
-            // })
             res.render('document/documentlist', { title: "Document List", documents })
+        })
+        .catch(err => console.log(err))
+}
+
+
+const changeDocumentStatusGet = (req, res, next) => {
+    models.Document.findByPk(req.params.document_id)
+        .then(document => {
+            res.render('document/changestatus', { title: "Change ststus", document })
+        })
+        .catch(err => console.log(err))
+}
+
+const changeDocumentStatusPost = (req, res, next) => {
+
+    models.Document.update({
+        status: req.body.status,
+    }, {
+        where: {
+            id: req.params.document_id
+        }
+    })
+        .then(document => {
+            res.redirect(`/documentation/document/${req.params.document_id}`)
         })
         .catch(err => console.log(err))
 }
@@ -154,5 +150,7 @@ module.exports = {
     documentUpdatePost,
     documentDeletePost,
     documentDetailOneGet,
-    documentDetailAllGet
+    documentDetailAllGet,
+    changeDocumentStatusGet,
+    changeDocumentStatusPost,
 }

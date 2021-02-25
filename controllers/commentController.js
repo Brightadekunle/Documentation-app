@@ -10,10 +10,6 @@ const commentCreatePost = (req, res, next) => {
             DocumentId: documentId,
         })
             .then(comment => {
-                // res.status(201).json({
-                //     message: "Comment created successfully",
-                //     comment: comment
-                // })
                 res.redirect(`/documentation/document/${documentId}`)
             })
             .catch(err => console.log(err))
