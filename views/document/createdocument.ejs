@@ -13,7 +13,7 @@
                 <!-- <input type="text" name="description" placeholder="Description"> -->
                 <textarea name="description" placeholder="Description" class="description"></textarea>
             </div>
-            <div>
+            <div style="margin-top: 12px;">
                 <h4>Select an Application</h4>
                 <select name="application" class="form-control">
                     <% applications.forEach(application => { %>
@@ -21,7 +21,7 @@
                     <% }) %>
                 </select>
             </div>
-            <div>
+            <div style="margin-top: 12px;">
                 <h4>Select a Category</h4>
                 <% categories.forEach(category => { %>
                     <input type="checkbox" class="categoryCheckbox radio__input" name="categories" value="<%= category.id %>">
