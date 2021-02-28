@@ -11,12 +11,12 @@
 
 body {
   font-family: "Libre Franklin", "Montserrat", "Raleway", sans-serif;
-  background: url("../images/showcase.jpg") no-repeat center center fixed;
+  /* background: url("../images/showcase.jpg") no-repeat center center fixed; */
   background-size: cover;
   height: 100vh;
   width: 100%;
-  /* background-color: #faf7f6; */
-  color: #fff;
+  background-color: #fff;
+  color: #111;
 }
 
 img {
@@ -26,9 +26,9 @@ img {
 h3 {
   text-transform: uppercase;
   font-family: "Montserrat ExtraBold";
-  font-size: 26px;
+  font-size: 22px;
   text-align: center;
-  color: #fff;
+  color: #111;
 }
 
 .container {
@@ -48,12 +48,6 @@ h3 {
   padding: 25px 40px;
   border-radius: 7px;
 }
-
-/* .flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
 
 input {
   margin-top: 8px;
@@ -97,7 +91,11 @@ button:active {
 
 nav {
   /* margin: 30px 250px 0 100px; */
-  margin: 40px 200px;
+  background-color: #64a5b7;
+}
+
+nav ul {
+  margin: 0 200px;
 }
 
 nav a {
@@ -118,6 +116,7 @@ nav a {
   font-size: 28px;
   font-weight: 700;
   font-family: "Montserrat";
+  margin-left: 100px;
 }
 
 .navbar-brand:hover {
@@ -141,19 +140,8 @@ nav a {
   width: 1.25em;
 }
 
-.radio__radio {
-  /* display: block;
-  width: 12px;
-  height: 12px;
-  border: 2px solid #d8e4e2;
-  border-radius: 50%;
-  margin-right: 10px;
-  box-sizing: border-box;
-  padding: 2px; */
-}
-
 .nav-link:hover {
-  color: #64a5b7;
+  color: #fff;
 }
 
 .description {
@@ -169,9 +157,9 @@ nav a {
 }
 
 .gig {
-  background: #333;
+  background: #fff;
   border-bottom: 4px solid #568c9b;
-  color: #fff;
+  color: #111;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: var(--box-shadow);

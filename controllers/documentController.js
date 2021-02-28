@@ -110,7 +110,7 @@ const documentUpdateGet = (req, res, next) => {
 const documentUpdatePost = (req, res, next) => {
 
     let docCat = req.body.categories
-    console.log(typeof docCat)
+    console.log(docCat)
     models.Document.update({
         subject: req.body.subject,
         description: req.body.description,
@@ -124,36 +124,20 @@ const documentUpdatePost = (req, res, next) => {
         }
     })
         .then(document => {
-            if (docCat.length == 1){
-                models.DocumentCategory.update({
-                    DocumentId: req.params.document_id,
-                    CategoryId: docCat
-                }, {
-                    where: {
-                        DocumentId: req.params.document_id
-                    }
-                })
-                    .then(() => {
-                        res.redirect('/documentation/document/documents')
-                    })
-            } else {
-                for (var id of docCat){
-                    // console.log(id)
-                    models.DocumentCategory.update({
-                        DocumentId: req.params.document_id,
-                        CategoryId: id
-                    }, {
-                        where: {
-                            DocumentId: req.params.document_id
-                        }
-                    })
-                        .then(documentCaregories => {
-                            // console.log(postCaregories)
-                            res.redirect('/documentation/document/documents')
+                    models.Document.findByPk(req.params.document_id)
+                        .then(document => {
+                            models.Category.findAll({
+                                where: {
+                                    id: docCat
+                                }
+                            })
+                            .then(cat => {
+                                document.setCategories(cat)
+                                res.redirect('/documentation/document/documents')
+                            })
+                            
                         })
                         .catch(err => console.log(err))
-                }
-            }
             res.redirect('/documentation/document/documents')
         })
         .catch(err => console.log(err))

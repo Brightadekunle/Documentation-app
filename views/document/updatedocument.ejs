@@ -16,10 +16,8 @@
             <div>
                 <h4>Select a Category</h4>
                 <% categories.forEach(category => { %>
-                    <% document.Categories.forEach(docCategory => { %>
-                    <input type="checkbox" class="categoryCheckbox radio__input" name="categories" value="<%= category.id %>" <% if(category.name == docCategory.name){ %> checked="checked" <% } %>>
+                    <input type="checkbox" class="categoryCheckbox radio__input" name="categories" value="<%= category.id %>" <% document.Categories.forEach(docCategory => { if(category.name == docCategory.name){ %> checked="checked" <% } }) %>>
                     <label for="<%= category.name %>"><%= category.name %></label>
-                    <% }) %>
                 <% }) %>
             </div>
             <div>
