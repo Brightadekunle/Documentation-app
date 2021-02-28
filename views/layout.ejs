@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
 
-    <% if (title) { %>
+
+    <% if (typeof title != "undefined") { %>
         <title>DocuTrack - <%= title %></title>
     <% } else { %>
         <title>DocuTrack</title>

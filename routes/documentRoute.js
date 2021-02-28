@@ -12,7 +12,7 @@ router.get('/update/:document_id', documentController.documentUpdateGet)
 
 router.post('/update/:document_id', documentController.documentUpdatePost)
 
-router.get('/delete/:document_id', documentController.documentDeletePost)
+router.post('/delete/:document_id', documentController.documentDeletePost)
 
 router.get('/documents', documentController.documentDetailAllGet)
 

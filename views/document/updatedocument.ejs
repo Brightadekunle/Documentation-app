@@ -11,24 +11,16 @@
             </div>
             <div>
                 <input type="text" name="description" placeholder="Description" value="<%= document.description %>">
-            </div>
-            <!-- <div>
-                <input type="text" name="application" placeholder="Application" value="<%= document.Application.name %>">
-            </div>
-            <div>
-                <input type="text" name="type" placeholder="Type" value="<%= document.Type.name %>">
-            </div>
-            <div>
-                <input type="text" name="category" placeholder="Category" value="<%= document.Category.name %>">
-            </div> -->
+            </div> 
 
             <div>
                 <h4>Select a Category</h4>
-                <select name="category" class="form-control">
-                        <% categories.forEach(category => { %>
-                        <option value="<%= category.id %>"><%= category.name %></option>
-                        <% }) %>
-                </select>
+                <% categories.forEach(category => { %>
+                    <% document.Categories.forEach(docCategory => { %>
+                    <input type="checkbox" class="categoryCheckbox radio__input" name="categories" value="<%= category.id %>" <% if(category.name == docCategory.name){ %> checked="checked" <% } %>>
+                    <label for="<%= category.name %>"><%= category.name %></label>
+                    <% }) %>
+                <% }) %>
             </div>
             <div>
                 <h4>Select an Application</h4>
@@ -42,8 +34,8 @@
                 <h4>Select a Type</h4>
                 <% types.forEach(type => { %>
                 <label for="" class="radio">
-                    <input type="radio" class="radio__input" name="type" value="<%= type.id %>">
-                    <label for=""><%= type.name %></label>
+                    <input type="radio" class="radio__input" name="type" value='<%= type.id %>' <% if(type.name == document.Type.name){ %> checked="checked" <% } %>>
+                    <label for=""><%= type.name   %></label>
                 </label>
                 <% }) %>
             </div>
@@ -55,3 +47,12 @@
     </form>
     
 </div>
+<script>
+    function ddlselect(){
+        var d = document.getElementById("myRadio");
+        d = document.getElementById("myRadio").checked
+
+        console.log(d)
+    
+    }
+</script>

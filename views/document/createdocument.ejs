@@ -14,14 +14,6 @@
                 <textarea name="description" placeholder="Description" class="description"></textarea>
             </div>
             <div>
-                <h4>Select a Category</h4>
-                <select name="category" class="form-control">
-                    <% categories.forEach(category => { %>
-                    <option value="<%= category.id %>"><%= category.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-            <div>
                 <h4>Select an Application</h4>
                 <select name="application" class="form-control">
                     <% applications.forEach(application => { %>
@@ -29,6 +21,12 @@
                     <% }) %>
                 </select>
             </div>
+            <div>
+                <h4>Select a Category</h4>
+                <% categories.forEach(category => { %>
+                    <input type="checkbox" class="categoryCheckbox radio__input" name="categories" value="<%= category.id %>">
+                    <label for="<%= category.name %>"><%= category.name %></label>
+                <% }) %>
             <div>
                 <h4>Select a Type</h4>
                 <% types.forEach(type => { %>
@@ -38,11 +36,29 @@
                 </label>
                 <% }) %>
             </div>
-            <div>
-                <button type="submit" class="submit__button">Submit</button>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" onclick="checkCat()" value="Submit">
             </div>
             
         </div>
     </form>
     
 </div>
+
+<script>
+    function checkCat() {
+    var checkBoxes = document.getElementsByClassName( 'categoryCheckbox' );
+    var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if ( checkBoxes[i].checked ) {
+            isChecked = true;
+        };
+    };
+    if ( isChecked ) {
+        
+        } else {
+            console.log('Please, check at least one checkbox!')
+            alert( 'Please, check at least one checkbox!' );
+        }   
+}
+</script>

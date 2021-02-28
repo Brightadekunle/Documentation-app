@@ -54,12 +54,19 @@ const categoryDeletePost = (req, res, next) => {
 }
 
 const categoryDetailOneGet = (req, res, next) => {
-    models.Category.findByPk(req.params.category_id, {
-        include: [models.Document]
-    })
+    models.Category.findByPk(req.params.category_id)
         .then(category => {
-            console.log(category.Documents)
-            res.render('category/categorydetail', { title: "Category Detail Page", category: category })
+            models.DocumentCategory.findAll({
+                include: [models.Document],
+                where: {
+                    CategoryId: category.id
+                }
+            })
+                .then(documents => {
+                    console.log(documents)
+                    res.render('category/categorydetail', { title: "Category Detail Page", category: category, documents: documents })
+                })
+                .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
 }
